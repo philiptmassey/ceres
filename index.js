@@ -28,6 +28,7 @@ app.post('/add', function(request, response) {
             response.status(500).send('Error connecting to database.');
             return;
         }
+        
         client.query('INSERT into data (id, data) values($1, $2)',
                      [id, data], function(err, result) {
             done();
@@ -35,6 +36,8 @@ app.post('/add', function(request, response) {
                 response.status(500).send('Error inserting into database.');
                 return;
             }
+
+            response.status(200).send();
          });
     });
 });
@@ -50,10 +53,10 @@ app.get('/datadump', function(request, response) {
             if (err) {
                 response.status(500).send('Error selecting in database.');
                 return;
-            } else {
-                response.setHeader('Content-Type', 'application/json');
-                response.send(JSON.stringify(result.rows));
             }
+
+            response.setHeader('Content-Type', 'application/json');
+            response.status(200).send(JSON.stringify(result.rows));
         });
     });
 });
