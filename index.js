@@ -31,7 +31,7 @@ app.post('/add', function(request, response) {
         client.query('INSERT into data (id, data) values($1, $2)',
                      [id, data], function(err, result) {
             done();
-            if (error) {
+            if (err) {
                 response.status(500).send('Error inserting into database.');
                 return;
             }
