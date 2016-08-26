@@ -1,16 +1,17 @@
+var bodyParser = require('body-parser');
 var express = require('express');
 var pg = require('pg');
+
+// App set up
 
 var app = express();
 app.set('port', (process.env.PORT || 8080));
 
-// bodyParse.urlencoded(options)
-// Parses the text as URL encoded data and exposes the resulting object on
-// req.body
-// from http://stackoverflow.com/questions/4295782/how-do-you-extract-post-data-in-node-js
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+// URI Handlers
 
 app.get('/', function(request, response) {
     response.send('Hello Ken!');
