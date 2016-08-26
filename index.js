@@ -18,8 +18,10 @@ app.get('/', function(request, response) {
 });
 
 app.post('/add', function(request, response) {
-    id = req.body.id
-    data = req.body.data
+    id = request.body.id
+    data = request.body.data
+
+    //TODO: check for empyt id/data and do not store.
 
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         if (err) {
