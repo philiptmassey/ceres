@@ -1,0 +1,25 @@
+{
+  "name": "ceres",
+  "version": "0.0.1",
+  "description": "Ken's stupid pet project",
+  "main": "index.js",
+  "engines": {
+    "node": "4.5.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/philiptmassey/ceres.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/philiptmassey/ceres/issues"
+  },
+  "homepage": "https://github.com/philiptmassey/ceres#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
