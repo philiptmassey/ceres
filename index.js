@@ -23,17 +23,17 @@ app.post('/add', function(request, response) {
 
     //TODO: check for empyt id/data and do not store.
 
-    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        if (err) {
-            response.status(500).send('Error connecting to database.');
+    pg.connect(process.env.DATABASE_URL, function(error, client, done) {
+        if (error) {
+            response.status(500).send(error);
             return;
         }
         
         client.query('INSERT into data (id, data) values($1, $2)',
-                     [id, data], function(err, result) {
+                     [id, data], function(error, result) {
             done();
-            if (err) {
-                response.status(500).send('Error inserting into database.');
+            if (error) {
+                response.status(500).send(error);
                 return;
             }
 
@@ -42,16 +42,16 @@ app.post('/add', function(request, response) {
     });
 });
 
-app.get('/datadump', function(request, response) {
-    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        if (err) {
-            response.status(500).send('Error connecting to database.');
+app.get('/data', function(request, response) {
+    pg.connect(process.env.DATABASE_URL, function(error, client, done) {
+        if (error) {
+            response.status(500).send(error);
             return;
         }
-        client.query('SELECT * from data', function(err, result) {
+        client.query('SELECT * from data', function(error, result) {
             done();
-            if (err) {
-                response.status(500).send('Error selecting in database.');
+            if (error) {
+                response.status(500).send(error);
                 return;
             }
 
